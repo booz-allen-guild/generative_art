@@ -18,6 +18,13 @@ python nsmirror.py
 ```
 Settings can be configured by editing `settings.py`.
 
+# Credentials
+
+Create a credentials.txt file in the main directory, containing your gmail email, a space, and your password:
+```
+<email@gmail.com> <emailpassword>
+```
+
 # Models
 Several style models trained specifically for this demo can be found in the `models` folder.
 
