@@ -3,9 +3,9 @@ import os
 import sys
 
 # run on cpu
-#GPU = -1
+GPU = -1
 # gpu to use
-GPU = 0
+# GPU = 0
 
 # webcam to use
 WEBCAM = 0

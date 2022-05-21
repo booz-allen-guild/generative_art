@@ -31,7 +31,7 @@ except ImportError:
 
 from PIL import Image
 
-import emailing
+# import emailing
 import settings
 from style import Style, load_styles
 
@@ -398,7 +398,8 @@ class MainApp(QWidget):
         self.freeze = self.image.copy() # prevent background update
 
         try:
-            emailing.handle_capture(self, self.freeze)
+            # emailing.handle_capture(self, self.freeze)
+            print('teset')
         except:
             msg = QMessageBox(self)
             msg.setIcon(QMessageBox.Critical)
