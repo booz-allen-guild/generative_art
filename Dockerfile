@@ -2,7 +2,7 @@ FROM python:2.7
 
 RUN apt-get update && apt-get -y install cmake && apt-get -y install qt4-default
 
-RUN apt-get -y install xserver-xorg
+# RUN apt-get -y install xserver-xorg
 
 RUN apt-get update && apt-get install -y \
 	build-essential \
@@ -18,6 +18,10 @@ RUN apt-get update && apt-get install -y \
 	x11-apps \
 	xemacs21
 
+RUN mkdir /opt/gen-art
+
+WORKDIR /opt/gen-art
+
 ADD . .
 
 RUN pip install -r requirements.txt
@@ -29,22 +33,22 @@ RUN pip install -r requirements.txt
 RUN tar -xvf sip-4.19.25.tar.gz
 RUN tar -xvf PyQt4_gpl_x11-4.12.3.tar.gz
 
-WORKDIR /sip-4.19.25
+WORKDIR /opt/gen-art/sip-4.19.25
 
 # install the files
 RUN python configure.py --sip-module PyQt4.sip
 RUN make
 RUN make install
 
-WORKDIR /PyQt4_gpl_x11-4.12.3
+WORKDIR /opt/gen-art/PyQt4_gpl_x11-4.12.3
 
 RUN python configure.py --confirm-license
 RUN make
 RUN make install
 
-RUN cp sip.pyi /usr/local/lib/python2.7/site-packages/sip.pyi
+# RUN cp sip.pyi /usr/local/lib/python2.7/site-packages/sip.pyi
 
-# WORKDIR /
+WORKDIR /opt/gen-art
 
 # This option will run app
 # RUN python nsmirror.py
